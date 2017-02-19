@@ -9,32 +9,45 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+/**
+ * This is the SliderView class extending JFrame that represent the gui
+ * of the Slider game.
+ * 
+ * @author Duc Nguyen
+ * @author Alex Reid
+ */
+
 public class SliderView extends JFrame {
     
     /** Auto-generated serial ID. */
 	private static final long serialVersionUID = -8956392921759908157L;
 
+	/** A default dimension of 400 x 400 for the game board. */
 	private static final Dimension DEFAULT_SIZE = new Dimension(400, 400);
     
 	//private int[][] myButton;
-	
-    private Dimension myDimension;
+
 
     private JPanel myGameBoard;
 
-    
+    /**
+     * This is the constructor for the SliderView that set up the menu
+     * bar.
+     */
     public SliderView() {
         super("Slider Game");
         setUpMenuBar();
         
     }
     
+    /**
+     * This is the start method that set the layout for the gui.
+     */
     public void start() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
-        myDimension = DEFAULT_SIZE;
+        setMinimumSize(DEFAULT_SIZE);
         setGUILayout();
-        setMinimumSize(myDimension);
         pack();
         setVisible(true);
     }
@@ -42,7 +55,7 @@ public class SliderView extends JFrame {
     public void setGUILayout() {
         add(myGameBoard, BorderLayout.CENTER);
         myGameBoard.setLayout(new GridLayout(4, 4));
-        
+        addButtons(theButtonList); //not working?
     }
     
     private void addButtons(int[][] theButtonList) {
