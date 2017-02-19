@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -27,11 +28,17 @@ public class Slider {
 	/** A counter for each move performed. */
 	private long myCounter = 0;
 	
+	private final Random randy = new Random();
 	
 	
 	/** 
 	 * The slider object; takes tiles and assigns them a number inside
 	 * the List.
+	 * Grab a random number for our tile. We use nextInt to
+	 * grab an int between 1 and 17, (by adding 0 to our list initially).
+	 * store correct number inside an arraylist to use as comparison for
+	 * our number to assign to a tile.
+	 * 
 	 */
 	public Slider() {
 		// create 2D array of 0's
@@ -40,14 +47,18 @@ public class Slider {
 				mySlider [i][j] = new Tile(0);
 			}
 		}
-		
-		int num = 1;
+		List<Integer> numR = new ArrayList<>();
+		numR.add(0);
+		Integer num = 1;
 		
 		// fill 2D array with numbers
 		for (int row = 1; row < NUM_ROWS-1; row++) {
 			for (int col = 1; col < NUM_COLUMNS-1; col++) {
+				while (numR.contains(num)) {
+					num = randy.nextInt(17);
+				}
+				numR.add(num);
 				mySlider [row][col] = new Tile(num);
-				num++;
 			}
 		}
 		System.out.print(mySlider);
