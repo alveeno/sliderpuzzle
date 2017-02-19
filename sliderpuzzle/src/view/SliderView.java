@@ -4,7 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -39,6 +45,8 @@ public class SliderView extends JFrame {
     private Tile[][] myTiles;
     
     private JTextPane counter;
+    
+    private String[] filenames;
 
     /**
      * This is the constructor for the SliderView that set up the menu
@@ -50,6 +58,10 @@ public class SliderView extends JFrame {
         setUpSlider();
         setUpMenuBar(); 
         myTiles = mySlider.getSlider();
+        filenames = new String[16];
+        for (int i = 1; i < 16; i++)	{
+        	filenames[i-1] = "media/" + i + ".gif";
+        }
     }
     
     /**
@@ -80,6 +92,15 @@ public class SliderView extends JFrame {
             	final JButton tile;
             	if(theButtonList[r][c].getNumber() != 16)	{
 	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
+	                Image img;
+					try {
+						img = ImageIO.read(new File(filenames[theButtonList[r][c].getNumber()-1]));
+		                tile.setIcon(new ImageIcon(img));
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
             	} else	{
             		tile = new JButton();
             		tile.setEnabled(false);
