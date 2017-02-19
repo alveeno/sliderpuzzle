@@ -24,6 +24,7 @@ public class Tile {
 	 */
 	public Tile(final int theNumber) {
 		myNumber = theNumber;
+		
 	}
 
 	/**
@@ -74,4 +75,10 @@ public class Tile {
 		myNumber = theNumber;
 	}
 	
+	/**
+	 * equals method
+	 */
+	public boolean equals(final Tile theOther) {
+		return this.myNumber == theOther.getNumber();
+	}
 }
