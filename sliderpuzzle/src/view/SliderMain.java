@@ -4,20 +4,21 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 
-
+/**
+ * This is the SliderMain class that run the program.
+ * 
+ * @author Duc Nguyen
+ */
 public class SliderMain {
 	public static void main(String[] args)	{
-		
-	    
-	    
-	    
 	    
 		//Creates an instance of SliderView and calls its start() method.
 		SliderView sliderGUI = new SliderView();
 		try {
+		    UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
             //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
             //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel");
-            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
+            //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
         } catch (final UnsupportedLookAndFeelException ex) {
             ex.printStackTrace();
         } catch (final IllegalAccessException ex) {
