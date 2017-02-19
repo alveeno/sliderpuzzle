@@ -181,11 +181,14 @@ public class SliderView extends JFrame {
     		winnersCircle.add(new Winner(winnerName, score));
     		
     	}
-
+    	
+    	// Sort winners by score and print top 10
     	Collections.sort(winnersCircle);
     	for (int i = 0; i < 10; i++) {
     		result += winnersCircle.get(i).toString() + "\n";
     	}
+    	
+    	return result;
     }
 
     private String readWinMessage() throws FileNotFoundException {
