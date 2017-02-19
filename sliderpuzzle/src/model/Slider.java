@@ -53,15 +53,20 @@ public class Slider {
 		//shuffle the List of tiles to create a random order.
 		Collections.shuffle(myTileNumbers);
 				 
-			myStack.addAll(myTileNumbers);
+		myStack.addAll(myTileNumbers);
 				
-			while (myStack.size() > 0) {
-				for (int row = 0; row < NUM_ROWS; row++) {
-					for (int col = 0; col < NUM_COLUMNS; col++) {
-						mySlider[row][col] = myStack.pop();
-					}
+		while (myStack.size() > 0) {
+			for (int row = 0; row < NUM_ROWS; row++) {
+				for (int col = 0; col < NUM_COLUMNS; col++) {
+					mySlider[row][col] = myStack.pop();
 				}
 			}
+		}
+		
+		for (Tile tile : myTileNumbers) {
+			System.out.println("Tile #: " + tile.getNumber());
+		}
+		
 	}
 
 	public Tile[][] getSlider() {
