@@ -10,7 +10,7 @@ import java.util.Stack;
  * Each instance of Slider will be randomized.
  * 
  * @author Alvin Nguyen
- * @author
+ * @author David Glines
  *
  */
 public class Slider {
@@ -54,11 +54,6 @@ public class Slider {
 	}
 	
 	/**
-	 * Messes the order of the 2d array to 'randomise' our tiles.
-	 */
-	
-	
-	/**
 	 * returns the Slider.
 	 * @return the SLider.
 	 */
@@ -66,7 +61,17 @@ public class Slider {
 		return mySlider;
 	}
 
-	
+	/**
+	 * Move the tile.
+	 * 
+	 * blankTile is an comparison tile for the real blank tile.
+	 * the realBlankTile is the real blank tile.
+	 * the clickedTile is the tile we clicked.
+	 * 
+	 * Check to see if the neighboring tiles are legal and equal to 16.
+	 * 
+	 * @param theTile the tile which we are trying to move.
+	 */
 	public void move(final Tile theTile) {
 		myCounter++;
 		Tile blankTile = new Tile(16);
@@ -117,5 +122,5 @@ public class Slider {
 			mySlider[row][col] = realBlankTile;
 			mySlider[row - 1][col] = clickedTile;
 		}
-}
+	}
 }
