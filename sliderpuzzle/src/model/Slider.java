@@ -27,6 +27,8 @@ public class Slider {
 	/** A counter for each move performed. */
 	private long myCounter = 0;
 	
+	
+	
 	/** 
 	 * The slider object; takes tiles and assigns them a number inside
 	 * the List.
@@ -38,7 +40,10 @@ public class Slider {
 				mySlider [i][j] = new Tile(0);
 			}
 		}
+		
 		int num = 1;
+		
+		// fill 2D array with numbers
 		for (int row = 1; row < NUM_ROWS-1; row++) {
 			for (int col = 1; col < NUM_COLUMNS-1; col++) {
 				mySlider [row][col] = new Tile(num);
@@ -68,7 +73,7 @@ public class Slider {
 
 	
 	public void move(final Tile theTile) {
-		myCounter++;
+		
 		Tile blankTile = new Tile(16);
 		Tile realBlankTile;
 		Tile clickedTile;
@@ -84,7 +89,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row][col + 1] = clickedTile;
-			
+			myCounter++;
 		} else if (mySlider[row][col - 1].equals(blankTile)) {
 			realBlankTile = mySlider[row][col - 1];
 			
@@ -92,7 +97,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row][col - 1] = clickedTile;
-			
+			myCounter++;
 		} else if (mySlider[row + 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row + 1][col];
 			
@@ -100,7 +105,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row + 1][col] = clickedTile;
-			
+			myCounter++;
 		} else if (mySlider[row + 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row + 1][col];
 			
@@ -108,7 +113,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row + 1][col] = clickedTile;
-			
+			myCounter++;
 		} else if (mySlider[row - 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row - 1][col];
 			
@@ -116,6 +121,38 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row - 1][col] = clickedTile;
+			myCounter++;
 		}
-}
+	}
+	
+	/**
+	 * counts the number of inversions and calculates their sum.
+	 * @return the sum of inversions.
+	 */
+	public int sumInversions() {
+		
+		int inversionCount = 0;
+		
+		// convert 2D array to regular array.
+		int numOfTiles = 15;
+		int[] arr = new int [numOfTiles];
+		int index = 0;
+		for (int row = 1; row < 5; row++) {
+			for (int col = 1; col < 5; col++) {
+				arr[index] = mySlider[row][col].getNumber();
+			}
+		}
+		
+		for (int i = 0; i < numOfTiles; i++) {
+			for (int j = i + 1; j < numOfTiles + 1; j++) {
+				int current = arr[i];
+				if (arr[j] < current) {
+					inversionCount++;
+				}
+				
+			}
+		}
+		return inversionCount;
+	}
+	
 }
