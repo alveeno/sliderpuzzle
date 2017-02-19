@@ -52,12 +52,63 @@ public class Slider {
 	 * 
 	 * @return true if this tile can be moved.
 	 */
-	public boolean isMovable(Tile theTile) {
-		boolean check = false;
-		if (theTile.getNumber() ==
-		} else if ()
+//	public boolean isMovable(Tile theTile) {
+//		boolean check = false;
+//		if ( ) {
+//		} else if () {
+//		
+//		return check;
+//		
+//	}
+
+	public void move(final Tile theTile) {
+		Tile blankTile = new Tile(16);
+		Tile realBlankTile;
+		Tile clickedTile;
 		
-		return check;
+		final int row = theTile.getRow();
+		final int col = theTile.getColumn();
 		
-	}
+		if (mySlider[row][col + 1].equals(blankTile)) {
+			
+			realBlankTile = mySlider[row][col + 1];
+			
+			clickedTile = theTile;
+			
+			mySlider[row][col] = realBlankTile;
+			mySlider[row][col + 1] = clickedTile;
+			
+		} else if (mySlider[row][col - 1].equals(blankTile)) {
+			realBlankTile = mySlider[row][col - 1];
+			
+			clickedTile = theTile;
+			
+			mySlider[row][col] = realBlankTile;
+			mySlider[row][col - 1] = clickedTile;
+			
+		} else if (mySlider[row + 1][col].equals(blankTile)) {
+			realBlankTile = mySlider[row + 1][col];
+			
+			clickedTile = theTile;
+			
+			mySlider[row][col] = realBlankTile;
+			mySlider[row + 1][col] = clickedTile;
+			
+		} else if (mySlider[row + 1][col].equals(blankTile)) {
+			realBlankTile = mySlider[row + 1][col];
+			
+			clickedTile = theTile;
+			
+			mySlider[row][col] = realBlankTile;
+			mySlider[row + 1][col] = clickedTile;
+			
+		} else if (mySlider[row - 1][col].equals(blankTile)) {
+			realBlankTile = mySlider[row - 1][col];
+			
+			clickedTile = theTile;
+			
+			mySlider[row][col] = realBlankTile;
+			mySlider[row - 1][col] = clickedTile;
+		}
+}
 }
