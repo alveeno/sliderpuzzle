@@ -77,7 +77,9 @@ public class SliderView extends JFrame {
                                 toString(theButtonList[r][c].getNumber())));
                 
                 tile.addActionListener(event -> {
-                	System.out.println(myTiles[row][col].getColumn());
+                	System.out.println("Row: " + myTiles[row][col].getRow());
+                	System.out.println("Column: " + myTiles[row][col].getColumn());
+
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
                 });
