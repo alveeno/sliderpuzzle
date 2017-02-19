@@ -150,7 +150,7 @@ public class Slider {
 		int inversionCount = 0;
 		
 		// convert 2D array to regular array.
-		int numOfTiles = 15;
+		int numOfTiles = 16;
 		int[] arr = new int [numOfTiles];
 		int index = 0;
 		for (int row = 1; row < 5; row++) {
