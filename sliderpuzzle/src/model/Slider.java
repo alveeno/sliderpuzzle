@@ -138,6 +138,7 @@ public class Slider {
 	/**
 	 * counts the number of inversions and calculates their sum.
 	 * @return the sum of inversions.
+	 * 
 	 */
 	private int sumInversions() {
 		
