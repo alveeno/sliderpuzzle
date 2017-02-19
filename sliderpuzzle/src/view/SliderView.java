@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.Slider;
+import model.Tile;
+
 /**
  * This is the SliderView class extending JFrame that represent the gui
  * of the Slider game.
@@ -26,7 +29,7 @@ public class SliderView extends JFrame {
 	private static final Dimension DEFAULT_SIZE = new Dimension(400, 400);
     
 	//private int[][] myButton;
-
+	private Slider mySlider;
 
     private JPanel myGameBoard;
 
@@ -36,6 +39,8 @@ public class SliderView extends JFrame {
      */
     public SliderView() {
         super("Slider Game");
+        myGameBoard = new JPanel();
+        mySlider = new Slider();
         setUpMenuBar();
         
     }
@@ -55,14 +60,16 @@ public class SliderView extends JFrame {
     public void setGUILayout() {
         add(myGameBoard, BorderLayout.CENTER);
         myGameBoard.setLayout(new GridLayout(4, 4));
-        addButtons(theButtonList); //not working?
+        addButtons(mySlider.getSlider()); 
     }
     
-    private void addButtons(int[][] theButtonList) {
+    private void addButtons(Tile[][] theButtonList) {
         for (int r = 0; r < theButtonList.length; r++) {
             for (int c = 0; c < theButtonList[r].length; c++) {
-                final JButton tile = new JButton(Integer.toString
-                                                 (theButtonList[r][c]));
+                final JButton tile = new JButton((Integer.
+                                toString(theButtonList[r][c].getNumber())));
+                //final JButton tile = new JButton(Integer.toString
+                  //                               (theButtonList[r][c]));
                 myGameBoard.add(tile);
             }
         }
@@ -71,7 +78,7 @@ public class SliderView extends JFrame {
 
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JButton newGame = new JButton("New");
+		JButton newGame = new JButton("New Game");
 		menuBar.add(newGame);
 		add(menuBar, BorderLayout.NORTH);
 	}
