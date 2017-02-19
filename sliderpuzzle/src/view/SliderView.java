@@ -247,7 +247,7 @@ public class SliderView extends JFrame {
      */
     private void setUpSlider()	{
     	mySlider = new Slider();
-    	while(mySlider.isSolvable())	{
+    	while(!mySlider.isSolvable())	{
     		mySlider = new Slider();
     	}
     }
