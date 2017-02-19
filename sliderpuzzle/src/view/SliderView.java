@@ -66,6 +66,7 @@ public class SliderView extends JFrame {
     private void addButtons(Tile[][] theButtonList) {
         for (int r = 0; r < theButtonList.length; r++) {
             for (int c = 0; c < theButtonList[r].length; c++) {
+            	System.out.println("Adding new JButton ("+theButtonList[r][c].getNumber()+")");
                 final JButton tile = new JButton((Integer.
                                 toString(theButtonList[r][c].getNumber())));
                 //final JButton tile = new JButton(Integer.toString
@@ -80,9 +81,11 @@ public class SliderView extends JFrame {
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
 		newGame.addActionListener(event -> {
+			System.out.println("New Game button pressed.");
 			removeButtons();
 			mySlider.shuffle();
 			addButtons(mySlider.getSlider());
+			revalidate();
 		});
 		menuBar.add(newGame);
 		add(menuBar, BorderLayout.NORTH);
@@ -91,6 +94,9 @@ public class SliderView extends JFrame {
     	mySlider = new Slider();
     }
     private void removeButtons()	{
+    	System.out.println("Removing all buttons");
     	myGameBoard.removeAll();
+    	
     }
+
 }
