@@ -21,6 +21,7 @@ import model.Tile;
  * @author Duc Nguyen
  * @author Alex Reid
  * @author Alvin Nguyen
+ * @author David Glines
  */
 
 public class SliderView extends JFrame {
@@ -29,7 +30,7 @@ public class SliderView extends JFrame {
 	private static final long serialVersionUID = -8956392921759908157L;
 
 	/** A default dimension of 400 x 400 for the game board. */
-	private static final Dimension DEFAULT_SIZE = new Dimension(400, 400);
+	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
     
 	//private int[][] myButton;
 	private Slider mySlider;
@@ -76,7 +77,6 @@ public class SliderView extends JFrame {
             for (int c = 1; c < 5; c++) {
             	final int row = r;
             	final int col = c;
-            	System.out.println("Adding new JButton ("+theButtonList[r][c].getNumber()+")");
             	final JButton tile;
             	if(theButtonList[r][c].getNumber() != 16)	{
 	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
@@ -86,16 +86,11 @@ public class SliderView extends JFrame {
             	}
                 
                 tile.addActionListener(event -> {
-                	System.out.println("Row: " + myTiles[row][col].getRow());
-                	System.out.println("Column: " + myTiles[row][col].getColumn());
-
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
-//                final JButton tile = new JButton(Integer.toString
-//                                                 (theButtonList[r][c]));
                 myGameBoard.add(tile);
 
             }
@@ -152,7 +147,6 @@ public class SliderView extends JFrame {
     }
     
     private void removeButtons()	{
-    	System.out.println("Removing all buttons");
     	myGameBoard.removeAll();
     	
     }

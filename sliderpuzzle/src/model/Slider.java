@@ -12,6 +12,8 @@ import java.util.Stack;
  * 
  * @author Alvin Nguyen
  * @author David Glines
+ * @author Duc Nguyen
+ * @author Alex Reid
  *
  */
 public class Slider {
@@ -63,7 +65,6 @@ public class Slider {
 				mySlider [row][col] = new Tile(num);
 			}
 		}
-		System.out.print(mySlider);
 	}
 	
 	/** Returns the move counter */
