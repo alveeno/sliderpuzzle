@@ -16,7 +16,7 @@ public class SliderControl {
 	
 	//private int [][] numbers = new int (Slider);
 	Slider slider = new Slider();
-	Tile tile = new Tile();
+	//Tile tile = new Tile();
 	
 	private boolean hasWon() {
 		//jdehwif(slider)
