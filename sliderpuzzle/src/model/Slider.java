@@ -60,6 +60,14 @@ public class Slider {
 //		return check;
 //		
 //	}
+	
+	/**
+	 * returns the Slider.
+	 * @return the SLider.
+	 */
+	public Tile[][] getSlider() {
+		return mySlider;
+	}
 
 	public void move(final Tile theTile) {
 		Tile blankTile = new Tile(16);
