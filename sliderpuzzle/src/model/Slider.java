@@ -7,6 +7,7 @@ import java.util.Stack;
 
 /**
  * Represents a 4x4 slider object which randomized tiles.
+ * Each instance of Slider will be randomized.
  * 
  * @author Alvin Nguyen 
  *
