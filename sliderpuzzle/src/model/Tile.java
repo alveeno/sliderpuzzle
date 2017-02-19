@@ -3,11 +3,10 @@ package model;
 /**
  * Represents an individual tile on the Slider Puzzle.
  * 
- * @author David
- * @author Alvin
- *
+ * @author David Glines
  */
 public class Tile {
+	
 
 	/** The number on the tile. */
 	private int myNumber;
@@ -27,5 +26,42 @@ public class Tile {
 		myNumber = theNumber;
 	}
 	
+	/**
+	 * Returns the number of the Tile.
+	 * @return the number of the Tile.
+	 */
+	public int getNumber() {
+		return myNumber;
+	}
+	
+	/**
+	 * Returns the row of the Tile.
+	 * @return the row of the Tile.
+	 */
+	public int getRow() {
+		return myRow;
+	}
+	
+	/**
+	 * Returns the row of the Tile.
+	 * @return the row of the Tile.
+	 */
+	public int getColumn() {
+		return myColumn;
+	}
+	
+	/**
+	 * Sets the row of the Tile.
+	 */
+	public void setRow(final int theRow) {
+		myRow = theRow;
+	}
+	
+	/**
+	 * Sets the row of the Tile.
+	 */
+	protected void setColumn(final int theColumn) {
+		myColumn = theColumn;
+	}
 	
 }
