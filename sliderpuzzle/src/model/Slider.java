@@ -51,7 +51,7 @@ public class Slider {
 		}
 		List<Integer> numR = new ArrayList<>();
 		numR.add(0);
-		Integer num = 1;
+		Integer num = randy.nextInt(17);
 		
 		// fill 2D array with numbers
 		for (int row = 1; row < NUM_ROWS-1; row++) {
