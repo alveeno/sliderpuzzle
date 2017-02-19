@@ -68,7 +68,7 @@ public class Slider {
 
 	
 	public void move(final Tile theTile) {
-		myCounter++;
+		
 		Tile blankTile = new Tile(16);
 		Tile realBlankTile;
 		Tile clickedTile;
@@ -84,6 +84,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row][col + 1] = clickedTile;
+			myCounter++;
 			
 		} else if (mySlider[row][col - 1].equals(blankTile)) {
 			realBlankTile = mySlider[row][col - 1];
@@ -92,6 +93,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row][col - 1] = clickedTile;
+			myCounter++;
 			
 		} else if (mySlider[row + 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row + 1][col];
@@ -100,6 +102,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row + 1][col] = clickedTile;
+			myCounter++;
 			
 		} else if (mySlider[row + 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row + 1][col];
@@ -116,6 +119,7 @@ public class Slider {
 			
 			mySlider[row][col] = realBlankTile;
 			mySlider[row - 1][col] = clickedTile;
+			myCounter++;
 		}
 }
 }
