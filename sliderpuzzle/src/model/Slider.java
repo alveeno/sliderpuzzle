@@ -27,6 +27,9 @@ public class Slider {
 	/** The 2d array of the slider - rows, columns. **/
 	private final Tile[][] mySlider = new Tile[NUM_ROWS][NUM_COLUMNS];
 	
+	/** A counter for each move performed. */
+	private long myCounter = 0;
+	
 	/** 
 	 * The slider object; takes tiles and assigns them a number inside
 	 * the List.
@@ -46,6 +49,11 @@ public class Slider {
 			}
 		}
 		System.out.print(mySlider);
+	}
+	
+	/** Returns the move counter */
+	public long getMoves() {
+		return myCounter;
 	}
 	
 	/**
@@ -72,6 +80,7 @@ public class Slider {
 
 	
 	public void move(final Tile theTile) {
+		myCounter++;
 		Tile blankTile = new Tile(16);
 		Tile realBlankTile;
 		Tile clickedTile;
