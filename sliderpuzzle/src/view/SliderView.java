@@ -39,10 +39,8 @@ public class SliderView extends JFrame {
     /** Auto-generated serial ID. */
 	private static final long serialVersionUID = -8956392921759908157L;
 
-	/** A default dimension of 400 x 400 for the game board. */
-	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
 	
-	/** A vicroty message for winners only. */
+	/** A victory message for winners only. */
 	private String myWinMessage = "You solved the puzzle!\nEnter your name so you "
 								+ "may be remembered for years to come.";
 	
@@ -82,9 +80,9 @@ public class SliderView extends JFrame {
      */
     public void start() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
-        setMinimumSize(DEFAULT_SIZE);
+        setResizable(false);
         setGUILayout();
+        setMinimumSize(getPreferredSize());
         pack();
         setVisible(true);
     }
@@ -103,7 +101,7 @@ public class SliderView extends JFrame {
             	final int col = c;
             	final JButton tile;
             	if(theButtonList[r][c].getNumber() != 16)	{
-	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
+	                tile = new JButton();
 	                Image img;
 					try {
 						img = ImageIO.read(new File(filenames[theButtonList[r][c].getNumber()-1]));
@@ -111,6 +109,7 @@ public class SliderView extends JFrame {
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						tile.setText(Integer.toString(theButtonList[r][c].getNumber()));
 					}
 
             	} else	{
@@ -167,6 +166,7 @@ public class SliderView extends JFrame {
     		score = readScores.nextLine();
     		score += readScores.nextLine();
     	}
+    	return "bleh";
     }
 
     private String readWinMessage() throws FileNotFoundException {
@@ -211,7 +211,7 @@ public class SliderView extends JFrame {
      */
     private void setUpSlider()	{
     	mySlider = new Slider();
-    	while(mySlider.isSolvable())	{
+    	while(!mySlider.isSolvable())	{
     		mySlider = new Slider();
     	}
     }
