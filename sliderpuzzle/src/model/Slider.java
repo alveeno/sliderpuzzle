@@ -9,7 +9,8 @@ import java.util.Stack;
  * Represents a 4x4 slider object which randomized tiles.
  * Each instance of Slider will be randomized.
  * 
- * @author Alvin Nguyen 
+ * @author Alvin Nguyen
+ * @author
  *
  */
 public class Slider {
@@ -69,6 +70,7 @@ public class Slider {
 		return mySlider;
 	}
 
+	
 	public void move(final Tile theTile) {
 		Tile blankTile = new Tile(16);
 		Tile realBlankTile;
