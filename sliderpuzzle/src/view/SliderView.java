@@ -40,7 +40,7 @@ public class SliderView extends JFrame {
     public SliderView() {
         super("Slider Game");
         myGameBoard = new JPanel();
-        mySlider = new Slider();
+        setUpSlider();
         setUpMenuBar();
         
     }
@@ -79,7 +79,18 @@ public class SliderView extends JFrame {
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
+		newGame.addActionListener(event -> {
+			removeButtons();
+			mySlider.shuffle();
+			addButtons(mySlider.getSlider());
+		});
 		menuBar.add(newGame);
 		add(menuBar, BorderLayout.NORTH);
 	}
+    private void setUpSlider()	{
+    	mySlider = new Slider();
+    }
+    private void removeButtons()	{
+    	myGameBoard.removeAll();
+    }
 }
