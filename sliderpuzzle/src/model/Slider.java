@@ -39,8 +39,8 @@ public class Slider {
 			}
 		}
 		int num = 1;
-		for (int row = 1; row < NUM_ROWS; row++) {
-			for (int col = 1; col < NUM_COLUMNS; col++) {
+		for (int row = 1; row < NUM_ROWS-1; row++) {
+			for (int col = 1; col < NUM_COLUMNS-1; col++) {
 				mySlider [row][col] = new Tile(num);
 				num++;
 			}
