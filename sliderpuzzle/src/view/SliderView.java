@@ -7,6 +7,8 @@ import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JButton;
@@ -37,7 +39,10 @@ public class SliderView extends JFrame {
 	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
 	
 	/** A vicroty message for winners only. */
-	private File myWinMessage = new File("highScoreList.txt");
+	private String myWinMessage = "You solved the puzzle!\nEnter your name so you "
+								+ "may be remembered for years to come.";
+	
+	private File myHighScores = new File("highScoresList.txt");
     
 
 	private Slider mySlider;
@@ -47,6 +52,8 @@ public class SliderView extends JFrame {
     private Tile[][] myTiles;
     
     private JTextPane counter;
+    
+//    private final PrintStream ps = new PrintStream("highScoreList.txt");
 
     /**
      * This is the constructor for the SliderView that set up the menu
@@ -92,14 +99,31 @@ public class SliderView extends JFrame {
             		tile.setEnabled(false);
             	}
                 
+            	
                 tile.addActionListener(event -> {
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
-                	try {
-						JOptionPane.showInputDialog(getParent(), readWinMessage(), "Victory!");
-					} catch (FileNotFoundException e) {
-						e.printStackTrace();
-					}
+                	
+                	// If the puzzle is solved:
+                	if (mySlider.isSolved()) {
+                		long score = mySlider.getMoves();
+                		String winnerName = "";
+                		PrintStream ps = null;
+                		
+                		//get the user name
+                		try {
+                			winnerName = JOptionPane.showInputDialog(getParent(), 
+                					readWinMessage(), "Victory!");
+                			ps = new PrintStream("highScoreList.txt");
+                		} catch (FileNotFoundException e) {
+                			e.printStackTrace();
+                		}
+                		//write the userName and score to highscore file.
+                		ps.println(score + winnerName);
+                		
+                		//display high scores
+                		JOptionPane.showMessageDialog(getParent(), sortHighScoreList());
+                	}
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
@@ -107,6 +131,23 @@ public class SliderView extends JFrame {
 
             }
         }
+    }
+    
+    private String sortHighScoreList() {
+    	Scanner readScores = null;
+    	String score = "";
+    	try {
+			readScores = new Scanner(myHighScores);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	//create a list to hold and sort high scores
+    	List<String> scoresList = new ArrayList<String>();
+    	while (readScores.hasNextLine()) {
+    		score = readScores.nextLine();
+    		score += readScores.nextLine();
+    	}
     }
 
     private String readWinMessage() throws FileNotFoundException {
