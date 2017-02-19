@@ -51,7 +51,7 @@ public class SliderView extends JFrame {
 	private String myWinMessage = "You solved the puzzle!\nEnter your name so you "
 								+ "may be remembered for years to come.";
 	
-	private File myHighScores = new File("highScoresList.txt");
+	private File myHighScores = new File(".\\highScoresList.txt");
     
 
 	private Slider mySlider;
@@ -150,7 +150,7 @@ public class SliderView extends JFrame {
                 		try {
                 			winnerName = JOptionPane.showInputDialog(getParent(), 
                 					readWinMessage(), "Victory!");
-                			ps = new PrintStream("highScoreList.txt");
+                			ps = new PrintStream(".\\highScoreList.txt");
                 		} catch (FileNotFoundException e) {
                 			e.printStackTrace();
                 		}
