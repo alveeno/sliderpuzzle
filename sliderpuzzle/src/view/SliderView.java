@@ -9,7 +9,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
 import model.Slider;
@@ -106,17 +105,16 @@ public class SliderView extends JFrame {
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
+		newGame.setFocusable(false);
 		newGame.addActionListener(event -> {
-//			System.out.println("New Game button pressed.");
-//			mySlider.shuffle();
-		    JOptionPane msg = new JOptionPane();
-            javax.swing.
+            int n = javax.swing.
             JOptionPane.showConfirmDialog(null,
                                           "Do you really want to create a new game?",
                                           "ARE YOU SURE?", JOptionPane.OK_CANCEL_OPTION);
-  
-            setUpSlider();
-			refreshButtons();
+            if (n == JOptionPane.OK_OPTION) {
+                setUpSlider();
+    			refreshButtons();
+            }
 		});
 		counter = new JTextPane();
 		counter.setVisible(false);
