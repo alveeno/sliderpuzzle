@@ -80,6 +80,15 @@ public class SliderView extends JFrame {
         for (int i = 1; i < 16; i++)	{
         	filenames[i-1] = "media/" + i + ".gif";
         }
+        Image icon;
+		try {
+			icon = ImageIO.read(new File("media/t-mobile.png"));
+	        setIconImage(icon);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
     }
     
     /**
