@@ -64,4 +64,8 @@ public class Tile {
 		myColumn = theColumn;
 	}
 	
+	protected void setNumber(final int theNumber) {
+		myNumber = theNumber;
+	}
+	
 }
