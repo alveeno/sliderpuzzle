@@ -88,6 +88,7 @@ public class SliderView extends JFrame {
                 tile.addActionListener(event -> {
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
+                	JOptionPane.showInputDialog(getParent(), winMessage, "Victory!");
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
