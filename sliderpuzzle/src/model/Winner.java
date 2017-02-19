@@ -1,5 +1,9 @@
 package model;
 
+/**
+* A class which represents a winner. Implements comparable for compareTo() usage.
+* @author David Glines
+*/
 public class Winner implements Comparable<Winner>{
 	
 	private String myName;
