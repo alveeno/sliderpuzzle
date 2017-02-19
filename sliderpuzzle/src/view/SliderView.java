@@ -107,11 +107,15 @@ public class SliderView extends JFrame {
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
 		newGame.addActionListener(event -> {
-			
+//			System.out.println("New Game button pressed.");
+//			mySlider.shuffle();
+		    JOptionPane msg = new JOptionPane();
             javax.swing.
             JOptionPane.showConfirmDialog(null,
                                           "Do you really want to create a new game?",
                                           "ARE YOU SURE?", JOptionPane.OK_CANCEL_OPTION);
+  
+            setUpSlider();
 			refreshButtons();
 		});
 		counter = new JTextPane();

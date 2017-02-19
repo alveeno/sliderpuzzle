@@ -41,6 +41,8 @@ public class Slider {
 	 * 
 	 */
 	public Slider() {
+		
+		myCounter = 0;
 		// create 2D array of 0's
 		for (int i = 0; i < NUM_ROWS; i++) {
 			for (int j = 0; j < NUM_COLUMNS; j++) {
