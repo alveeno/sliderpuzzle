@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -108,6 +109,11 @@ public class SliderView extends JFrame {
 		newGame.addActionListener(event -> {
 //			System.out.println("New Game button pressed.");
 //			mySlider.shuffle();
+		    JOptionPane msg = new JOptionPane();
+            javax.swing.
+            JOptionPane.showConfirmDialog(null,
+                                          "Do you really want to create a new game?",
+                                          "ARE YOU SURE?", JOptionPane.OK_CANCEL_OPTION);
 			refreshButtons();
 		});
 		counter = new JTextPane();
