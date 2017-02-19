@@ -251,7 +251,7 @@ public class SliderView extends JFrame {
     		mySlider = new Slider();
     	}
     }
-    
+    //random comment
     private void refreshButtons()	{
 		removeButtons();
 		refreshTiles();
