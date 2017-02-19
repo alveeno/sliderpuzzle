@@ -41,20 +41,29 @@ public class Slider {
 			myTileNumbers.add(tile);
 		}
 		
-		//shuffle the List of tiles to create a random order.
-		Collections.shuffle(myTileNumbers);
-		 
-		myStack.addAll(myTileNumbers);
-		
-		while (myStack.size() > 0) {
-			for (int row = 0; row < NUM_ROWS; row++) {
-				for (int col = 0; col < NUM_COLUMNS; col++) {
-					mySlider[row][col] = myStack.pop();
-				}
-			}
-		}
+		//shuffles the tiles in the slider 2d array.
+		shuffle();
 	}
 	
+	/**
+	 * Shuffles the tiles in the slider array by adding the tile numbers
+	 * to a stack collection and iterating over that stack.
+	 */
+	public void shuffle() {
+		//shuffle the List of tiles to create a random order.
+		Collections.shuffle(myTileNumbers);
+				 
+			myStack.addAll(myTileNumbers);
+				
+			while (myStack.size() > 0) {
+				for (int row = 0; row < NUM_ROWS; row++) {
+					for (int col = 0; col < NUM_COLUMNS; col++) {
+						mySlider[row][col] = myStack.pop();
+					}
+				}
+			}
+	}
+
 	public Tile[][] getSlider() {
 		return mySlider;
 	}
