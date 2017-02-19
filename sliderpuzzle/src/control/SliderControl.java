@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -18,5 +19,6 @@ public class SliderControl {
 		return false;
 		
 	}
-
 }
+
+
