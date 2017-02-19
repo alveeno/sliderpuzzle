@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -36,7 +37,7 @@ public class SliderView extends JFrame {
 	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
 	
 	/** A vicroty message for winners only. */
-	private File myWinMessage;
+	private File myWinMessage = new File("highScoreList.txt");
     
 
 	private Slider mySlider;
@@ -94,7 +95,11 @@ public class SliderView extends JFrame {
                 tile.addActionListener(event -> {
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
-                	JOptionPane.showInputDialog(getParent(), readWinMessage(), "Victory!");
+                	try {
+						JOptionPane.showInputDialog(getParent(), readWinMessage(), "Victory!");
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
@@ -104,14 +109,16 @@ public class SliderView extends JFrame {
         }
     }
 
-    private String readWinMessage() {
-    	try {
-			PrintStream ps = new PrintStream(myWinMessage);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+    private String readWinMessage() throws FileNotFoundException {
+    	String result = "";
+    	Scanner s = new Scanner(myWinMessage);
     	
+    	for (int i = 0; i < 20; i++) {
+    		result += s.nextLine() + "\t"
+    				+ s.nextLine() + "\n";
+    		
+    	}
+    	return result;
     }
 
     private void setUpMenuBar()	{
