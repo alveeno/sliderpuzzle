@@ -1,10 +1,8 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-import java.util.Stack;
 
 /**
  * Represents a 4x4 slider object which randomized tiles.
