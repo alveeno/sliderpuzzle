@@ -58,6 +58,10 @@ public class Tile {
 		myRow = theRow;
 	}
 	
+	public void somethingNew () {
+		System.out.println(" ");
+	}
+	
 	/**
 	 * Sets the row of the Tile. 
 	 * @param theColumn is the Column to set the Tile to.
