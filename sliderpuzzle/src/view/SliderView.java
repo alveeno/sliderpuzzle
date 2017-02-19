@@ -73,8 +73,12 @@ public class SliderView extends JFrame {
             	final int row = r;
             	final int col = c;
             	System.out.println("Adding new JButton ("+theButtonList[r][c].getNumber()+")");
-                final JButton tile = new JButton((Integer.
-                                toString(theButtonList[r][c].getNumber())));
+            	final JButton tile;
+            	if(theButtonList[r][c].getNumber() != 16)	{
+	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
+            	} else	{
+            		tile = new JButton();
+            	}
                 
                 tile.addActionListener(event -> {
                 	System.out.println("Row: " + myTiles[row][col].getRow());
@@ -86,6 +90,7 @@ public class SliderView extends JFrame {
 //                final JButton tile = new JButton(Integer.toString
 //                                                 (theButtonList[r][c]));
                 myGameBoard.add(tile);
+
             }
         }
     }
