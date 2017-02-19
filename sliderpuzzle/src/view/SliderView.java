@@ -16,6 +16,8 @@ public class SliderView extends JFrame {
 
 	private static final Dimension DEFAULT_SIZE = new Dimension(400, 400);
     
+	//private int[][] myButton;
+	
     private Dimension myDimension;
 
     private JPanel myGameBoard;
@@ -24,6 +26,7 @@ public class SliderView extends JFrame {
     public SliderView() {
         super("Slider Game");
         setUpMenuBar();
+        
     }
     
     public void start() {
@@ -37,11 +40,23 @@ public class SliderView extends JFrame {
     }
     
     public void setGUILayout() {
-        add(myGameBoard, new BorderLayout().CENTER);
+        add(myGameBoard, BorderLayout.CENTER);
         myGameBoard.setLayout(new GridLayout(4, 4));
         
     }
-	private void setUpMenuBar()	{
+    
+    private void addButtons(int[][] theButtonList) {
+        for (int r = 0; r < theButtonList.length; r++) {
+            for (int c = 0; c < theButtonList[r].length; c++) {
+                final JButton tile = new JButton(Integer.toString
+                                                 (theButtonList[r][c]));
+                myGameBoard.add(tile);
+            }
+        }
+    }
+
+
+    private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New");
 		menuBar.add(newGame);
