@@ -75,7 +75,7 @@ public class SliderView extends JFrame {
     public SliderView() {
         super("Slider Game");
         myGameBoard = new JPanel();
-        setUpSlider();
+        mySlider = new Slider();
         setUpMenuBar(); 
         myTiles = mySlider.getSlider();
         filenames = new String[16];
@@ -278,8 +278,9 @@ public class SliderView extends JFrame {
      */
     private void setUpSlider()	{
     	mySlider = new Slider();
+    	mySlider.shuffle();
     	while(!mySlider.isSolvable())	{
-    		mySlider = new Slider();
+    		mySlider.shuffle();
     	}
     }
 
