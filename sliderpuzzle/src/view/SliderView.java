@@ -88,6 +88,7 @@ public class SliderView extends JFrame {
     public void start() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
+
         setMinimumSize(DEFAULT_SIZE);
         setGUILayout();
         pack();
@@ -95,6 +96,7 @@ public class SliderView extends JFrame {
     }
     
     public void setGUILayout() {
+
         add(myGameBoard, BorderLayout.CENTER);
         myGameBoard.setLayout(new GridLayout(4, 4));
         addButtons(mySlider.getSlider()); 
@@ -108,7 +110,7 @@ public class SliderView extends JFrame {
             	final int col = c;
             	final JButton tile;
             	if(theButtonList[r][c].getNumber() != 16)	{
-	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
+	                tile = new JButton();
 	                Image img;
 					try {
 						img = ImageIO.read(new File(filenames[theButtonList[r][c].getNumber()-1]));
