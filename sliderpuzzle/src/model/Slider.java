@@ -15,16 +15,16 @@ import java.util.Stack;
 public class Slider {
 	
 	/** The number of rows in the slider. **/
-	private static final int NUM_ROWS = 4;
+	private static final int NUM_ROWS = 6;
 	
 	/** The number of columns in the slider. **/
-	private static final int NUM_COLUMNS = 4;
+	private static final int NUM_COLUMNS = 6;
 	
 	/** The number of tiles in the slider. **/
 	private static final int NUM_TILES= 16;
 	
 	/** The 2d array of the slider - rows, columns. **/
-	private final Tile[][] mySlider = new Tile[NUM_ROWS][NUM_COLUMNS];
+	private final int[][] mySlider = new int[NUM_ROWS][NUM_COLUMNS];
 
 	private final List<Tile> myTileNumbers = new ArrayList<>();
 	
@@ -35,43 +35,46 @@ public class Slider {
 	 * the List.
 	 */
 	public Slider() {
-		for (int i = 0; i < NUM_TILES; i++) {
-			Tile tile = new Tile();
-			tile.setNumber(i);
-			myTileNumbers.add(tile);
-		}
-		
-		//shuffles the tiles in the slider 2d array.
-		shuffle();
-	}
-	
-	/**
-	 * Shuffles the tiles in the slider array by adding the tile numbers
-	 * to a stack collection and iterating over that stack.
-	 */
-	public void shuffle() {
-		//shuffle the List of tiles to create a random order.
-		Collections.shuffle(myTileNumbers);
-				 
-		myStack.addAll(myTileNumbers);
-				
-		while (myStack.size() > 0) {
-			for (int row = 0; row < NUM_ROWS; row++) {
-				for (int col = 0; col < NUM_COLUMNS; col++) {
-					mySlider[row][col] = myStack.pop();
-				}
+		// create 2D array of 0's
+		for (int i = NUM_ROWS; i < 6; i ++) {
+			for (int j = NUM_COLUMNS; j < 6; i++) {
+				mySlider [i][j] = 0;
 			}
 		}
-		
-		for (Tile tile : myTileNumbers) {
-			System.out.println("Tile #: " + tile.getNumber());
+		int num = 1;
+		for (int row = 1; row < NUM_ROWS; row++) {
+			for (int col = 1; col < NUM_COLUMNS; col++) {
+				mySlider [row][col] = num;
+				num++;
+			}
 		}
-		
+		System.out.print(mySlider);
+		//shuffle the List of tiles to create a random order.
+//		Collections.shuffle(myTileNumbers);
+//		 
+//		myStack.addAll(myTileNumbers);
+//		
+//		while (myStack.size() > 0) {
+//			for (int row = 0; row < NUM_ROWS; row++) {
+//				for (int col = 0; col < NUM_COLUMNS; col++) {
+//					mySlider[row][col] = myStack.pop();
+//				}
+//			}
+//		}
 	}
-
-	public Tile[][] getSlider() {
-		return mySlider;
-	}
-	
-	
+//	
+//	public Tile[][] getSlider() {
+//		return mySlider;
+//	}
+//	
+//	/**
+//	 * Returns true if this tile can be moved.
+//	 * @return true if this tile can be moved.
+//	 */
+//	public boolean isMoveable() {
+//		
+//	}
+//	public Tile getTile(final int theRow, final int theCol) {
+//		
+//	}
 }
