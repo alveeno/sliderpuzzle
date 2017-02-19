@@ -33,8 +33,8 @@ public class Slider {
 	 */
 	public Slider() {
 		// create 2D array of 0's
-		for (int i = 10; i < NUM_ROWS; i ++) {
-			for (int j = 0; j < NUM_COLUMNS; i++) {
+		for (int i = 0; i < NUM_ROWS; i++) {
+			for (int j = 0; j < NUM_COLUMNS; j++) {
 				mySlider [i][j] = new Tile(0);
 			}
 		}
