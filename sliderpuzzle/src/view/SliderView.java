@@ -115,6 +115,7 @@ public class SliderView extends JFrame {
             if (n == JOptionPane.OK_OPTION) {
                 setUpSlider();
     			refreshButtons();
+    			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
             }
 		});
 		counter = new JTextPane();
