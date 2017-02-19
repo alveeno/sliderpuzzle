@@ -58,6 +58,7 @@ public class Slider {
 	
 	/**
 	 * Returns true if this tile can be moved.
+	 * changes
 	 * 
 	 * @return true if this tile can be moved.
 	 */
