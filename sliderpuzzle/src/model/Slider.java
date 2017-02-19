@@ -21,9 +21,6 @@ public class Slider {
 	/** The number of columns in the slider. **/
 	private static final int NUM_COLUMNS = 6;
 	
-	/** The number of tiles in the slider. **/
-	private static final int NUM_TILES= 16;
-	
 	/** The 2d array of the slider - rows, columns. **/
 	private final Tile[][] mySlider = new Tile[NUM_ROWS][NUM_COLUMNS];
 	
@@ -57,19 +54,9 @@ public class Slider {
 	}
 	
 	/**
-	 * Returns true if this tile can be moved.
-	 * changes
-	 * 
-	 * @return true if this tile can be moved.
+	 * Messes the order of the 2d array to 'randomise' our tiles.
 	 */
-//	public boolean isMovable(Tile theTile) {
-//		boolean check = false;
-//		if ( ) {
-//		} else if () {
-//		
-//		return check;
-//		
-//	}
+	
 	
 	/**
 	 * returns the Slider.
