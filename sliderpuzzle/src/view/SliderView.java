@@ -8,6 +8,8 @@ import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 
 import model.Slider;
 import model.Tile;
@@ -34,7 +36,8 @@ public class SliderView extends JFrame {
     private JPanel myGameBoard;
     
     private Tile[][] myTiles;
-
+    
+    private JTextPane counter;
 
     /**
      * This is the constructor for the SliderView that set up the menu
@@ -87,6 +90,8 @@ public class SliderView extends JFrame {
 
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
+                	counter.setVisible(true);
+                	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
 //                final JButton tile = new JButton(Integer.toString
 //                                                 (theButtonList[r][c]));
@@ -105,7 +110,12 @@ public class SliderView extends JFrame {
 //			mySlider.shuffle();
 			refreshButtons();
 		});
+		counter = new JTextPane();
+		counter.setVisible(false);
+		Dimension textSize = new Dimension(60, 20);
+		counter.setMinimumSize(textSize);
 		menuBar.add(newGame);
+		menuBar.add(counter);
 		add(menuBar, BorderLayout.NORTH);
 	}
     
