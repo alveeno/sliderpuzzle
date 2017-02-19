@@ -10,7 +10,7 @@ import java.util.Stack;
  * Each instance of Slider will be randomized.
  * 
  * @author Alvin Nguyen
- * @author
+ * @author David Glines
  *
  */
 public class Slider {
@@ -59,11 +59,6 @@ public class Slider {
 	}
 	
 	/**
-	 * Messes the order of the 2d array to 'randomise' our tiles.
-	 */
-	
-	
-	/**
 	 * returns the Slider.
 	 * @return the SLider.
 	 */
@@ -71,7 +66,17 @@ public class Slider {
 		return mySlider;
 	}
 
-	
+	/**
+	 * Move the tile.
+	 * 
+	 * blankTile is an comparison tile for the real blank tile.
+	 * the realBlankTile is the real blank tile.
+	 * the clickedTile is the tile we clicked.
+	 * 
+	 * Check to see if the neighboring tiles are legal and equal to 16.
+	 * 
+	 * @param theTile the tile which we are trying to move.
+	 */
 	public void move(final Tile theTile) {
 		
 		Tile blankTile = new Tile(16);
@@ -134,12 +139,12 @@ public class Slider {
 	 * counts the number of inversions and calculates their sum.
 	 * @return the sum of inversions.
 	 */
-	public int sumInversions() {
+	private int sumInversions() {
 		
 		int inversionCount = 0;
 		
 		// convert 2D array to regular array.
-		int numOfTiles = 15;
+		int numOfTiles = 16;
 		int[] arr = new int [numOfTiles];
 		int index = 0;
 		for (int row = 1; row < 5; row++) {
@@ -160,4 +165,14 @@ public class Slider {
 		return inversionCount;
 	}
 	
+	/**
+	 * Determine whether the sum of inversions
+	 * is an even number. If yes, then puzzle is
+	 * solvable.
+	 * 
+	 * @return whether the puzzle is solvable.
+	 */
+	public boolean isSolvable() {
+		return sumInversions() % 2 == 0;
+	}
 }
