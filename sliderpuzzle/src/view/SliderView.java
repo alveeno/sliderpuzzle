@@ -67,6 +67,9 @@ public class SliderView extends JFrame {
     /** This String array will contain all the image urls for our buttons. */
     private String[] filenames;
 
+    /** True if we have just initialized the program; False if we have won. **/
+	private boolean checkWon = true;
+
 
     /**
      * The constructor for this class sets up part of our JFrame and fills all of our
@@ -146,20 +149,22 @@ public class SliderView extends JFrame {
             	
             	// Adding our ActionListeners!
                 tile.addActionListener(event -> {
-                	mySlider.move(myTiles[row][col]);
-                	refreshButtons();
+                	if (checkWon  == false) {
+                		mySlider.move(myTiles[row][col]);
                 	
-                	// If the puzzle is solved:
-                	if (mySlider.isSolved()) {
-                        int n = javax.swing.JOptionPane.showConfirmDialog(null,
-                                                              "Well done!  Would you like to play again?",
-                                                              "Winner!", JOptionPane.OK_CANCEL_OPTION);
-                                if (n == JOptionPane.OK_OPTION) {
-                                    setUpSlider();
-                        			refreshButtons();
-                        			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
-                        			counter.setVisible(false);
-                                }
+                		refreshButtons();
+                	
+	                	// If the puzzle is solved:
+	                	if (mySlider.isSolved()) {
+	                        int n = javax.swing.JOptionPane.showConfirmDialog(null,
+	                                                              "Well done!  Would you like to play again?",
+	                                                              "Winner!", JOptionPane.OK_CANCEL_OPTION);
+	                                if (n == JOptionPane.OK_OPTION) {
+	                                    setUpSlider();
+	                        			refreshButtons();
+	                        			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
+	                        			counter.setVisible(false);
+	                                }
                                 
 //						 Code that needs fixing!!!!
 //                		long score = mySlider.getMoves();
@@ -182,6 +187,7 @@ public class SliderView extends JFrame {
                 	}
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
+                	}
                 });
                 myGameBoard.add(tile);
             }
@@ -249,7 +255,7 @@ public class SliderView extends JFrame {
      */
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		JButton newGame = new JButton("New Game");
+		JButton newGame = new JButton("Shuffle");
 		newGame.setFocusable(false);
 		newGame.addActionListener(event -> {
             int n = javax.swing.
@@ -257,6 +263,8 @@ public class SliderView extends JFrame {
                                           "Do you really want to create a new game?",
                                           "ARE YOU SURE?", JOptionPane.OK_CANCEL_OPTION);
             if (n == JOptionPane.OK_OPTION) {
+            	
+            	checkWon = false;
                 setUpSlider();
     			refreshButtons();
     			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
