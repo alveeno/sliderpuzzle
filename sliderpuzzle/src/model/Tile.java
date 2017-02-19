@@ -52,6 +52,7 @@ public class Tile {
 	
 	/**
 	 * Sets the row of the Tile.
+	 * @param theRow is the Row to set the Tile to.
 	 */
 	public void setRow(final int theRow) {
 		myRow = theRow;
@@ -59,11 +60,16 @@ public class Tile {
 	
 	/**
 	 * Sets the row of the Tile.
+	 * @param theColumn is the Column to set the Tile to.
 	 */
 	protected void setColumn(final int theColumn) {
 		myColumn = theColumn;
 	}
 	
+	/**
+	 * Sets the Number of the Tile.
+	 * @param theNumber is the Number to change the Tile number to.
+	 */
 	protected void setNumber(final int theNumber) {
 		myNumber = theNumber;
 	}
