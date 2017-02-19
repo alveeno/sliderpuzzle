@@ -36,7 +36,7 @@ public class Slider {
 	public Slider() {
 		for (int i = 0; i < NUM_TILES; i++) {
 			Tile tile = new Tile();
-			//tile.setNumber(i);
+			tile.setNumber(i);
 			myTileNumbers.add(tile);
 		}
 		
