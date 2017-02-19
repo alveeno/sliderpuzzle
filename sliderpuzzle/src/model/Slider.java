@@ -51,6 +51,18 @@ public class Slider {
 				mySlider [i][j] = new Tile(0);
 			}
 		}
+		
+		int num = 1;
+		// fill 2D array with numbers
+		for (int row = 1; row < NUM_ROWS-1; row++) {
+			for (int col = 1; col < NUM_COLUMNS-1; col++) {
+				mySlider [row][col] = new Tile(num);
+				num++;
+			}
+		}
+	}
+	
+	public void shuffle() {
 		List<Integer> numR = new ArrayList<>();
 		numR.add(0);
 		Integer num = randy.nextInt(17);
