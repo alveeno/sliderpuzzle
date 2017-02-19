@@ -11,8 +11,12 @@ import java.io.FileNotFoundException;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,6 +27,7 @@ import javax.swing.JTextPane;
 
 import model.Slider;
 import model.Tile;
+import model.Winner;
 
 /**
  * This is the SliderView class extending JFrame that represent the gui
@@ -152,21 +157,37 @@ public class SliderView extends JFrame {
     }
     
     private String sortHighScoreList() {
+    	String result = "";
+    	
     	Scanner readScores = null;
-    	String score = "";
+    	String winnerName = "";
+    	Integer score;
     	try {
 			readScores = new Scanner(myHighScores);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+    	
     	//create a list to hold and sort high scores
-    	List<String> scoresList = new ArrayList<String>();
+    	List<Winner> winnersCircle = new ArrayList<Winner>();
+    	
     	while (readScores.hasNextLine()) {
-    		score = readScores.nextLine();
-    		score += readScores.nextLine();
+    		
+    		winnerName = readScores.nextLine();
+    		score = readScores.nextInt();
+    		
+    		winnersCircle.add(new Winner(winnerName, score));
+    		
     	}
-    	return "bleh";
+    	
+    	// Sort winners by score and print top 10
+    	Collections.sort(winnersCircle);
+    	for (int i = 0; i < 10; i++) {
+    		result += winnersCircle.get(i).toString() + "\n";
+    	}
+    	
+    	return result;
     }
 
     private String readWinMessage() throws FileNotFoundException {
@@ -181,6 +202,8 @@ public class SliderView extends JFrame {
     	return result;
     }
 
+    
+    
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
