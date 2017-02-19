@@ -78,6 +78,7 @@ public class SliderView extends JFrame {
 	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
             	} else	{
             		tile = new JButton();
+            		tile.setEnabled(false);
             	}
                 
                 tile.addActionListener(event -> {
