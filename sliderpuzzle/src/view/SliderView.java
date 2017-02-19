@@ -31,7 +31,7 @@ public class SliderView extends JFrame {
 	/** A default dimension of 400 x 400 for the game board. */
 	private static final Dimension DEFAULT_SIZE = new Dimension(400, 400);
     
-	//private int[][] myButton;
+
 	private Slider mySlider;
 
     private JPanel myGameBoard;
@@ -116,6 +116,7 @@ public class SliderView extends JFrame {
                 setUpSlider();
     			refreshButtons();
     			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
+    			counter.setVisible(false);
             }
 		});
 		counter = new JTextPane();
