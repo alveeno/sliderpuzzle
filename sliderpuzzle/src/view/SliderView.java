@@ -130,6 +130,9 @@ public class SliderView extends JFrame {
      */
     private void setUpSlider()	{
     	mySlider = new Slider();
+    	while(mySlider.isSolvable())	{
+    		mySlider = new Slider();
+    	}
     }
     
     private void refreshButtons()	{

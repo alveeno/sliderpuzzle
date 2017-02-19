@@ -162,11 +162,12 @@ public class Slider {
 		for (int row = 1; row < 5; row++) {
 			for (int col = 1; col < 5; col++) {
 				arr[index] = mySlider[row][col].getNumber();
+				index++;
 			}
 		}
 		
 		for (int i = 0; i < numOfTiles; i++) {
-			for (int j = i + 1; j < numOfTiles + 1; j++) {
+			for (int j = i + 1; j < numOfTiles; j++) {
 				int current = arr[i];
 				if (arr[j] < current) {
 					inversionCount++;
