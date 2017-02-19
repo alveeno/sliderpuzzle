@@ -142,6 +142,7 @@ public class SliderView extends JFrame {
                 		} catch (FileNotFoundException e) {
                 			e.printStackTrace();
                 		}
+                		
                 		//write the userName and score to highscore file.
                 		ps.println(score + winnerName);
                 		
