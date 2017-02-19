@@ -45,13 +45,14 @@ public class SliderView extends JFrame {
 	/** A default dimension of 512 x 512 for the game board. */
 	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
 	
-	/** A vicroty message for winners only. */
+	/** A victory message for winners only, if high scores are enabled. */
 	private String myWinMessage = "You solved the puzzle!\nEnter your name so you "
 								+ "may be remembered for years to come.";
 	
+	/** Text file used to hold all the highs cores for this game, if enabled. */
 	private File myHighScores = new File("media/highScoresList.txt");
     
-
+	/** Slider class handles most of the logic in our game. */
 	private Slider mySlider;
 
     private JPanel myGameBoard;
@@ -140,23 +141,32 @@ public class SliderView extends JFrame {
                 	
                 	// If the puzzle is solved:
                 	if (mySlider.isSolved()) {
-                		long score = mySlider.getMoves();
-                		String winnerName = "";
-                		PrintStream ps = null;
-                		
-                		//get the user name
-                		try {
-                			winnerName = JOptionPane.showInputDialog(getParent(), 
-                					readWinMessage(), "Victory!");
-                			ps = new PrintStream(".\\highScoreList.txt");
-                		} catch (FileNotFoundException e) {
-                			e.printStackTrace();
-                		}
-                		//write the userName and score to highscore file.
-                		ps.println(score + winnerName);
-                		
-                		//display high scores
-                		JOptionPane.showMessageDialog(getParent(), sortHighScoreList());
+                        int n = javax.swing.JOptionPane.showConfirmDialog(null,
+                                                              "Well done!  Would you like to play again?",
+                                                              "Winner!", JOptionPane.OK_CANCEL_OPTION);
+                                if (n == JOptionPane.OK_OPTION) {
+                                    setUpSlider();
+                        			refreshButtons();
+                        			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
+                        			counter.setVisible(false);
+                                }
+//                		long score = mySlider.getMoves();
+//                		String winnerName = "";
+//                		PrintStream ps = null;
+//                		
+//                		//get the user name
+//                		try {
+//                			winnerName = JOptionPane.showInputDialog(getParent(), 
+//                					readWinMessage(), "Victory!");
+//                			ps = new PrintStream("media/highScoreList.txt");
+//                		} catch (FileNotFoundException e) {
+//                			e.printStackTrace();
+//                		}
+//                		//write the userName and score to highscore file.
+//                		ps.println(score + winnerName);
+//                		
+//                		//display high scores
+//                		JOptionPane.showMessageDialog(getParent(), sortHighScoreList());
                 	}
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
@@ -202,14 +212,15 @@ public class SliderView extends JFrame {
     }
 
     private String readWinMessage() throws FileNotFoundException {
-    	String result = "";
-    	Scanner s = new Scanner(myWinMessage);
+    	String result = myWinMessage;
+//    	String result = "";
+//    	Scanner s = new Scanner(myWinMessage);
     	
-    	for (int i = 0; i < 20; i++) {
-    		result += s.nextLine() + "\t"
-    				+ s.nextLine() + "\n";
-    		
-    	}
+//    	for (int i = 0; i < 20; i++) {
+//    		result += s.nextLine() + "\t"
+//    				+ s.nextLine() + "\n";
+//    		
+//    	}
     	return result;
     }
 
