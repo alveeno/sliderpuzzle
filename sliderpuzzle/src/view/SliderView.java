@@ -49,25 +49,28 @@ public class SliderView extends JFrame {
 	private String myWinMessage = "You solved the puzzle!\nEnter your name so you "
 								+ "may be remembered for years to come.";
 	
-	/** Text file used to hold all the highs cores for this game, if enabled. */
+	/** Text file used to hold all the high scores for this game, if enabled. */
 	private File myHighScores = new File("media/highScoresList.txt");
     
 	/** Slider class handles most of the logic in our game. */
 	private Slider mySlider;
 
+	/** This JPanel contains all our image buttons. */
     private JPanel myGameBoard;
     
+    /** Tiles contain the value for each button, as well as its row and column. */
     private Tile[][] myTiles;
     
+    /** This JTextPane will update with our total moves while we play. */
     private JTextPane counter;
     
-
+    /** This String array will contain all the image urls for our buttons. */
     private String[] filenames;
 
 
     /**
-     * This is the constructor for the SliderView that set up the menu
-     * bar.
+     * The constructor for this class sets up part of our JFrame and fills all of our
+     * above fields.
      */
     public SliderView() {
         super("Slider Game");
@@ -84,14 +87,14 @@ public class SliderView extends JFrame {
 			icon = ImageIO.read(new File("media/t-mobile.png"));
 	        setIconImage(icon);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.err.println("Failed to load JFrame icon.");
 		}
 
     }
     
     /**
-     * This is the start method that set the layout for the gui.
+     * start() finishes setting up our GUI and adds ActionListeners to all our buttons.
      */
     public void start() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,6 +106,9 @@ public class SliderView extends JFrame {
         setVisible(true);
     }
     
+    /**
+     * This method sets up the grid containing all our image buttons.
+     */
     public void setGUILayout() {
 
         add(myGameBoard, BorderLayout.CENTER);
@@ -110,6 +116,10 @@ public class SliderView extends JFrame {
         addButtons(mySlider.getSlider()); 
     }
     
+    /**
+     * This method adds all the image buttons needed for the game.
+     * @param theButtonList - 2D Tile array containing all the locations of our values.
+     */
     private void addButtons(Tile[][] theButtonList) {
     	refreshTiles();
         for (int r = 1; r < 5; r++) {
@@ -133,8 +143,8 @@ public class SliderView extends JFrame {
             		tile = new JButton();
             		tile.setEnabled(false);
             	}
-                
             	
+            	// Adding our ActionListeners!
                 tile.addActionListener(event -> {
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
@@ -150,6 +160,8 @@ public class SliderView extends JFrame {
                         			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                         			counter.setVisible(false);
                                 }
+                                
+//						 Code that needs fixing!!!!
 //                		long score = mySlider.getMoves();
 //                		String winnerName = "";
 //                		PrintStream ps = null;
@@ -172,11 +184,14 @@ public class SliderView extends JFrame {
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
                 myGameBoard.add(tile);
-
             }
         }
     }
     
+    /**
+     * This method sorts our high score list. (UNFINISHED)
+     * @return String
+     */
     private String sortHighScoreList() {
     	String result = "";
     	
@@ -210,7 +225,12 @@ public class SliderView extends JFrame {
     	
     	return result;
     }
-
+    
+    /**
+     * This method displays the victory message! (UNFINISHED)
+     * @return String
+     * @throws FileNotFoundException
+     */
     private String readWinMessage() throws FileNotFoundException {
     	String result = myWinMessage;
 //    	String result = "";
@@ -224,8 +244,9 @@ public class SliderView extends JFrame {
     	return result;
     }
 
-    
-    
+    /**
+     * This method sets up our menu bar that contains our New Game button and our counter.
+     */
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
@@ -252,7 +273,8 @@ public class SliderView extends JFrame {
 	}
 
 	/**
-     * Instantiates mySlider.
+     * This method creates a new instance of Slider and checks if it is solvable. If not,
+     * it will instantiate Slider until it is solvable.
      */
     private void setUpSlider()	{
     	mySlider = new Slider();
@@ -260,13 +282,20 @@ public class SliderView extends JFrame {
     		mySlider = new Slider();
     	}
     }
-    //random comment
+
+	/**
+	 * This method updates our GUI.
+	 */
     private void refreshButtons()	{
 		removeButtons();
 		refreshTiles();
 		addButtons(myTiles);
 		revalidate();
     }
+    
+    /**
+     * This method sets the coords of our Tiles based on their location in our 2D array.
+     */
     private void setCoords()	{
     	for (int r = 1; r <= 4; r++)	{
     		for (int c = 1; c <= 4; c++)	{
@@ -276,11 +305,17 @@ public class SliderView extends JFrame {
     	}
     }
     
+    /**
+     * Clears our grid.
+     */
     private void removeButtons()	{
     	myGameBoard.removeAll();
     	
     }
-    
+
+    /**
+     * Updates our Tile array
+     */
     private void refreshTiles()	{
 		myTiles = mySlider.getSlider();
 		setCoords();
