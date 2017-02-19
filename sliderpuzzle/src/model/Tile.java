@@ -62,7 +62,7 @@ public class Tile {
 	 * Sets the row of the Tile. 
 	 * @param theColumn is the Column to set the Tile to.
 	 */
-	protected void setColumn(final int theColumn) {
+	public void setColumn(final int theColumn) {
 		myColumn = theColumn;
 	}
 	
@@ -70,7 +70,7 @@ public class Tile {
 	 * Sets the Number of the Tile.
 	 * @param theNumber is the Number to change the Tile number to.
 	 */
-	protected void setNumber(final int theNumber) {
+	public void setNumber(final int theNumber) {
 		myNumber = theNumber;
 	}
 	

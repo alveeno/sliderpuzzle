@@ -32,6 +32,9 @@ public class SliderView extends JFrame {
 	private Slider mySlider;
 
     private JPanel myGameBoard;
+    
+    private Tile[][] myTiles;
+
 
     /**
      * This is the constructor for the SliderView that set up the menu
@@ -41,8 +44,8 @@ public class SliderView extends JFrame {
         super("Slider Game");
         myGameBoard = new JPanel();
         setUpSlider();
-        setUpMenuBar();
-        
+        setUpMenuBar(); 
+        myTiles = mySlider.getSlider();
     }
     
     /**
@@ -64,13 +67,22 @@ public class SliderView extends JFrame {
     }
     
     private void addButtons(Tile[][] theButtonList) {
-        for (int r = 0; r < theButtonList.length; r++) {
-            for (int c = 0; c < theButtonList[r].length; c++) {
+    	refreshTiles();
+        for (int r = 1; r < 5; r++) {
+            for (int c = 1; c < 5; c++) {
+            	final int row = r;
+            	final int col = c;
             	System.out.println("Adding new JButton ("+theButtonList[r][c].getNumber()+")");
                 final JButton tile = new JButton((Integer.
                                 toString(theButtonList[r][c].getNumber())));
-                //final JButton tile = new JButton(Integer.toString
-                  //                               (theButtonList[r][c]));
+                
+                tile.addActionListener(event -> {
+                	System.out.println(myTiles[row][col].getColumn());
+                	mySlider.move(myTiles[row][col]);
+                	refreshButtons();
+                });
+//                final JButton tile = new JButton(Integer.toString
+//                                                 (theButtonList[r][c]));
                 myGameBoard.add(tile);
             }
         }
@@ -81,22 +93,45 @@ public class SliderView extends JFrame {
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
 		newGame.addActionListener(event -> {
-			System.out.println("New Game button pressed.");
-			removeButtons();
-			mySlider.shuffle();
-			addButtons(mySlider.getSlider());
-			revalidate();
+//			System.out.println("New Game button pressed.");
+//			mySlider.shuffle();
+			refreshButtons();
 		});
 		menuBar.add(newGame);
 		add(menuBar, BorderLayout.NORTH);
 	}
+    
+    /**
+     * Instantiates mySlider.
+     */
     private void setUpSlider()	{
     	mySlider = new Slider();
     }
+    
+    private void refreshButtons()	{
+		removeButtons();
+		refreshTiles();
+		addButtons(myTiles);
+		revalidate();
+    }
+    private void setCoords()	{
+    	for (int r = 1; r <= 4; r++)	{
+    		for (int c = 1; c <= 4; c++)	{
+    			myTiles[r][c].setColumn(c);
+    			myTiles[r][c].setRow(r);
+    		}
+    	}
+    }
+    
     private void removeButtons()	{
     	System.out.println("Removing all buttons");
     	myGameBoard.removeAll();
     	
+    }
+    
+    private void refreshTiles()	{
+		myTiles = mySlider.getSlider();
+		setCoords();
     }
 
 }

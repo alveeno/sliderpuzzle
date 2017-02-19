@@ -16,7 +16,7 @@ public class SliderControl {
 	
 	private int [][] numbers = new int[4][4];
 	Slider slider = new Slider();
-	Tile tile = new Tile();
+//	Tile tile = new Tile();
 	
 	private boolean hasWon() {
 		//if(slider.getSlider().equals(slider)) {
