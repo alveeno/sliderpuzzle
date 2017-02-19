@@ -90,10 +90,7 @@ public class Slider {
 			mySlider[row][col] = realBlankTile;
 			mySlider[row][col + 1] = clickedTile;
 			myCounter++;
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'master' of https://github.com/alveeno/sliderpuzzle.git
+
 		} else if (mySlider[row][col - 1].equals(blankTile)) {
 			realBlankTile = mySlider[row][col - 1];
 			
@@ -102,10 +99,7 @@ public class Slider {
 			mySlider[row][col] = realBlankTile;
 			mySlider[row][col - 1] = clickedTile;
 			myCounter++;
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'master' of https://github.com/alveeno/sliderpuzzle.git
+
 		} else if (mySlider[row + 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row + 1][col];
 			
@@ -114,10 +108,7 @@ public class Slider {
 			mySlider[row][col] = realBlankTile;
 			mySlider[row + 1][col] = clickedTile;
 			myCounter++;
-<<<<<<< HEAD
-=======
-			
->>>>>>> branch 'master' of https://github.com/alveeno/sliderpuzzle.git
+
 		} else if (mySlider[row + 1][col].equals(blankTile)) {
 			realBlankTile = mySlider[row + 1][col];
 			
@@ -136,6 +127,8 @@ public class Slider {
 			myCounter++;
 		}
 	}
+	
+	
 	
 	/**
 	 * counts the number of inversions and calculates their sum.
