@@ -149,7 +149,7 @@ public class Slider {
 	
 	
 	/**
-	 * counts the nusmber of inversions and calculates their sum.
+	 * counts the number of inversions and calculates their sum.
 	 * @return the sum of inversions.
 	 * 
 	 */

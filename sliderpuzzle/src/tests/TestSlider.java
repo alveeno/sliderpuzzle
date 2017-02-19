@@ -19,30 +19,38 @@ public class TestSlider {
 	/** The number of tiles in the slider. **/
 	private static final int NUM_TILES= 16;
 	
-	/** The 2d array of the slider - rows, columns. **/
-	private final Tile[][] mySlider = new Tile[NUM_ROWS][NUM_COLUMNS];
-	
 	@Before
 	public void setUpBefore() {
-		Slider slider = new Slider();
+		Tile[][] mySlider = new Tile[NUM_ROWS][NUM_COLUMNS];
 	}
 
 	@Test
 	public void testSlider() {
-		for (int i = NUM_ROWS; i < 6; i ++) {
-			for (int j = NUM_COLUMNS; j < 6; i++) {
-				mySlider [i][j] = new Tile(0);
-				assertTrue("Not equal to zero!", mySlider [i][j].getNumber() == 0);
+		Tile[][] mySlider = new Tile[NUM_ROWS][NUM_COLUMNS];
+		int inversionCount = 0;
+		
+		// convert 2D array to regular array.
+		int numOfTiles = 16;
+		int[] arr = new int [numOfTiles];
+		int index = 0;
+		for (int row = 1; row < 5; row++) {
+			for (int col = 1; col < 5; col++) {
+				arr[index] = mySlider[row][col].getNumber();
+				index++;
 			}
 		}
-		int num = 1;
-		for (int row = 1; row < NUM_ROWS; row++) {
-			for (int col = 1; col < NUM_COLUMNS; col++) {
-				mySlider [row][col] = new Tile(num);
-				assertTrue("Not equal to num!", mySlider [row][col].getNumber() == num);
-				num++;
+		
+		for (int i = 0; i < numOfTiles; i++) {
+			for (int j = i + 1; j < numOfTiles; j++) {
+				int current = arr[i];
+				if (arr[j] < current) {
+					inversionCount++;
+				}
+				
 			}
 		}
+		System.out.println(inversionCount);
+		
 	}
 
 	@Test

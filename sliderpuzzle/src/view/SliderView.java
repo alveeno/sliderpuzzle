@@ -20,6 +20,7 @@ import model.Tile;
  * 
  * @author Duc Nguyen
  * @author Alex Reid
+ * @author Alvin Nguyen
  */
 
 public class SliderView extends JFrame {
@@ -124,8 +125,8 @@ public class SliderView extends JFrame {
 		menuBar.add(counter);
 		add(menuBar, BorderLayout.NORTH);
 	}
-    
-    /**
+
+	/**
      * Instantiates mySlider.
      */
     private void setUpSlider()	{
