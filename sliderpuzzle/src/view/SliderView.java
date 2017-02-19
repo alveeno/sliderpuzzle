@@ -13,9 +13,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -44,14 +42,14 @@ public class SliderView extends JFrame {
     /** Auto-generated serial ID. */
 	private static final long serialVersionUID = -8956392921759908157L;
 
-	/** A default dimension of 400 x 400 for the game board. */
+	/** A default dimension of 512 x 512 for the game board. */
 	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
 	
 	/** A vicroty message for winners only. */
 	private String myWinMessage = "You solved the puzzle!\nEnter your name so you "
 								+ "may be remembered for years to come.";
 	
-	private File myHighScores = new File(".\\highScoresList.txt");
+	private File myHighScores = new File("media/highScoresList.txt");
     
 
 	private Slider mySlider;
@@ -96,7 +94,7 @@ public class SliderView extends JFrame {
      */
     public void start() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setResizable(true);
+        setResizable(false);
 
         setMinimumSize(DEFAULT_SIZE);
         setGUILayout();
