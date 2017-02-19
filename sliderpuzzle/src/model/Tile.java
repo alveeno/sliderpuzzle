@@ -18,5 +18,14 @@ public class Tile {
 	/** The column of the Tile. */
 	private int myColumn;
 	
+	/**
+	 * Constructs a Tile with its number passed as a parameter.
+	 * 
+	 * @param theNumber is the number of the tile.
+	 */
+	public Tile(final int theNumber) {
+		myNumber = theNumber;
+	}
+	
 	
 }
