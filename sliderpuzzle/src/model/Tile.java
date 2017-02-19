@@ -2,7 +2,7 @@ package model;
 
 public class Tile {
 
-	public void alvinsMethod() {
-		System.out.println("alvin's metho");
+	public void davidsMethod(){
+		System.out.print("davids method");
 	}
 }
