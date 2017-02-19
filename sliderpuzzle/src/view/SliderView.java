@@ -158,7 +158,7 @@ public class SliderView extends JFrame {
     }
     
     private String sortHighScoreList() {
-    	String result;
+    	String result = "";
     	
     	Scanner readScores = null;
     	String winnerName = "";
@@ -182,10 +182,9 @@ public class SliderView extends JFrame {
     		
     	}
 
-    	
+    	Collections.sort(winnersCircle);
     	for (int i = 0; i < 10; i++) {
-    		String name = scoresList.get(key)
-    		result += 
+    		result += winnersCircle.get(i).toString() + "\n";
     	}
     }
 
@@ -201,6 +200,8 @@ public class SliderView extends JFrame {
     	return result;
     }
 
+    
+    
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JButton newGame = new JButton("New Game");
