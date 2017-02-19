@@ -59,7 +59,7 @@ public class Tile {
 	}
 	
 	/**
-	 * Sets the row of the Tile.
+	 * Sets the row of the Tile. 
 	 * @param theColumn is the Column to set the Tile to.
 	 */
 	protected void setColumn(final int theColumn) {
