@@ -112,8 +112,8 @@ public class SliderView extends JFrame {
 						img = ImageIO.read(new File(filenames[theButtonList[r][c].getNumber()-1]));
 		                tile.setIcon(new ImageIcon(img));
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						//e.printStackTrace();
+						System.err.println("Failed to load image.  Using number instead.");
 						tile.setText(Integer.toString(theButtonList[r][c].getNumber()));
 					}
 
