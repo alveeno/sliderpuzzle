@@ -190,4 +190,15 @@ public class Slider {
 	public boolean isSolvable() {
 		return sumInversions() % 2 == 0;
 	}
+	
+	/**
+	 * determine if the puzzle has been solved.
+	 * (If the sum of all the inversions is 0, 
+	 *  then the puzzle has been solved)
+	 *  
+	 *  @return true if the puzzle has been solved.
+	 */
+	public boolean isSolved() {
+		return sumInversions() == 0;
+	}
 }
