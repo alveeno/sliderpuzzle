@@ -4,9 +4,16 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+<<<<<<< HEAD
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+=======
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.util.Scanner;
+>>>>>>> refs/remotes/origin/master
 
 import javax.imageio.ImageIO;
 import javax.swing.Icon;
@@ -27,6 +34,7 @@ import model.Tile;
  * @author Duc Nguyen
  * @author Alex Reid
  * @author Alvin Nguyen
+ * @author David Glines
  */
 
 public class SliderView extends JFrame {
@@ -35,9 +43,12 @@ public class SliderView extends JFrame {
 	private static final long serialVersionUID = -8956392921759908157L;
 
 	/** A default dimension of 400 x 400 for the game board. */
-	private static final Dimension DEFAULT_SIZE = new Dimension(400, 400);
+	private static final Dimension DEFAULT_SIZE = new Dimension(512, 512);
+	
+	/** A vicroty message for winners only. */
+	private File myWinMessage = new File("highScoreList.txt");
     
-	//private int[][] myButton;
+
 	private Slider mySlider;
 
     private JPanel myGameBoard;
@@ -88,7 +99,6 @@ public class SliderView extends JFrame {
             for (int c = 1; c < 5; c++) {
             	final int row = r;
             	final int col = c;
-            	System.out.println("Adding new JButton ("+theButtonList[r][c].getNumber()+")");
             	final JButton tile;
             	if(theButtonList[r][c].getNumber() != 16)	{
 	                tile = new JButton((Integer.toString(theButtonList[r][c].getNumber())));
@@ -107,22 +117,33 @@ public class SliderView extends JFrame {
             	}
                 
                 tile.addActionListener(event -> {
-                	System.out.println("Row: " + myTiles[row][col].getRow());
-                	System.out.println("Column: " + myTiles[row][col].getColumn());
-
                 	mySlider.move(myTiles[row][col]);
                 	refreshButtons();
+                	try {
+						JOptionPane.showInputDialog(getParent(), readWinMessage(), "Victory!");
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
                 	counter.setVisible(true);
                 	counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
                 });
-//                final JButton tile = new JButton(Integer.toString
-//                                                 (theButtonList[r][c]));
                 myGameBoard.add(tile);
 
             }
         }
     }
 
+    private String readWinMessage() throws FileNotFoundException {
+    	String result = "";
+    	Scanner s = new Scanner(myWinMessage);
+    	
+    	for (int i = 0; i < 20; i++) {
+    		result += s.nextLine() + "\t"
+    				+ s.nextLine() + "\n";
+    		
+    	}
+    	return result;
+    }
 
     private void setUpMenuBar()	{
 		JPanel menuBar = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -137,6 +158,7 @@ public class SliderView extends JFrame {
                 setUpSlider();
     			refreshButtons();
     			counter.setText("Moves: " + Long.toString(mySlider.getMoves()));
+    			counter.setVisible(false);
             }
 		});
 		counter = new JTextPane();
@@ -174,7 +196,6 @@ public class SliderView extends JFrame {
     }
     
     private void removeButtons()	{
-    	System.out.println("Removing all buttons");
     	myGameBoard.removeAll();
     	
     }

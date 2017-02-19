@@ -12,6 +12,8 @@ import java.util.Stack;
  * 
  * @author Alvin Nguyen
  * @author David Glines
+ * @author Duc Nguyen
+ * @author Alex Reid
  *
  */
 public class Slider {
@@ -35,7 +37,7 @@ public class Slider {
 	 * The slider object; takes tiles and assigns them a number inside
 	 * the List.
 	 * Grab a random number for our tile. We use nextInt to
-	 * grab an intf between 1 and 17, (by adding 0 to our list initially).
+	 * grab an int between 1 and 17, (by adding 0 to our list initially).
 	 * store correct number inside an arraylist to use as comparison for
 	 * our number to assign to a tile.
 	 * 
@@ -63,7 +65,6 @@ public class Slider {
 				mySlider [row][col] = new Tile(num);
 			}
 		}
-		System.out.print(mySlider);
 	}
 	
 	/** Returns the move counter */
