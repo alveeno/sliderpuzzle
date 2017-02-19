@@ -51,7 +51,7 @@ public class Slider {
 		}
 		
 		int num = 1;
-		// fill 2D array with numbers
+		// fill 2D array with number s
 		for (int row = 1; row < NUM_ROWS-1; row++) {
 			for (int col = 1; col < NUM_COLUMNS-1; col++) {
 				mySlider [row][col] = new Tile(num);
