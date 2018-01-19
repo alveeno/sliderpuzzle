@@ -7,6 +7,6 @@ Contributors to this project:
 [Alvin Nguyen](https://github.com/alveeno),
 [Duc Nguyen](https://github.com/davidnguyen2302),
 [Alex Reid](https://github.com/cshourglass),
-[David Glines](https://github.com/dglines86),
+[David Glines](https://github.com/dglines),
 [Aashish Kumar](https://github.com/vats96ashu),
 Wilder Garcia
